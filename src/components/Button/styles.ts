@@ -2,9 +2,9 @@ import styled from "styled-components"
 import { colors } from "styles/GlobalStyle"
 
 export const Botao = styled.button`
-  color: ${colors.white};
+  color: ${colors.black};
   font-weight: bold;
-  background-color: ${colors.third};
+  background-color: ${colors.white};
   padding: 0.6rem;
   border: 0;
   border-radius: 0.6rem;
