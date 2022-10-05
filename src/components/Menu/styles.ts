@@ -1,9 +1,7 @@
 import styled from "styled-components"
 import { colors } from "styles/GlobalStyle"
-
 export const Cabecalho = styled.header`
   display: flex;
-  background-color: ${colors.black};
   border-bottom: 0.5rem solid ${colors.black};
   picture svg {
     height: 6rem;
@@ -19,11 +17,22 @@ export const Cabecalho = styled.header`
       display: flex;
       align-items: center;
       li {
-        margin: 1.5em;
+        margin: 0 1.5em;
         a {
           text-decoration: none;
-          font-size: 1.5em;
-          color: ${colors.white};
+          font-size: 1.2em;
+          color: ${colors.black};
+        }
+        button {
+          display: flex;
+          gap: 0.5rem;
+          align-items: center;
+          text-decoration: none;
+          font-size: 1.2em;
+          color: ${colors.black};
+          border: 0;
+          background-color: transparent;
+          cursor: pointer;
         }
       }
     }

@@ -1,4 +1,4 @@
-import { AuthContext } from "contexts/AuthContext"
+import { AuthContext } from "contexts/authContext"
 import { IAuthContextData } from "interfaces/user.interface"
 import { useContext } from "react"
 
