@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components"
 import 'react-toastify/dist/ReactToastify.css';
+
 export default createGlobalStyle`
   * {
     margin: 0;
@@ -16,4 +17,6 @@ export const colors = {
   thirdLight: "#ffe9ca",
   white: "#ffffff",
   black: "#000000",
+  success: "#50ba9e",
+  danger: "#660000"
 }
