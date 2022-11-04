@@ -5,7 +5,7 @@ export interface ICard {
     data: string,
     titulo: string,
     mensagem: string,
-    topico: {
+    informacoe: {
       id: number,
       item: string
     }[]

@@ -16,8 +16,8 @@ const Card = ({ dados }: ICard) => {
           <h3>Título: {dados.titulo}</h3>
           <h3>Mensagem: {dados.mensagem}</h3>
           <div>
-            {dados.topico.map((topic) => (
-              <span key={topic.id}>{topic.item}</span>
+            {dados.informacoe.map((informacoe) => (
+              <span key={informacoe.id}>{informacoe.item}</span>
             ))}
           </div>
         </div>

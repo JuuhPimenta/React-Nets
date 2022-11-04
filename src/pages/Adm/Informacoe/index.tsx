@@ -13,7 +13,7 @@ import { AdmInformacoePage } from "..";
 import Informacoe from "services/data/Informacoe";
 
 const AdmInformacoe = () => {
-  const [AdmInformacoe, setinformacoe] = useState<IInformacoeData[]>();
+  const [Informacoe, setinformacoe] = useState<IInformacoeData[]>();
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
@@ -71,9 +71,9 @@ const AdmInformacoe = () => {
             <table>
               <thead>
                 <tr>
-                  <th>Nome</th>
-                  <th>Título</th>
-                  <th>Mensagem</th>
+                  <th>Time</th>
+                  <th>Temporada</th>
+                  <th>Vitórias</th>
                   <th>Editar</th>
                   <th>Remover</th>
                 </tr>
@@ -82,9 +82,9 @@ const AdmInformacoe = () => {
                 {Informacoe &&
                   Informacoe.map((item) => (
                     <tr key={item.id}>
-                      <td>{item.user?.name}</td>
-                      <td>{item.title}</td>
-                      <td>{item.message}</td>
+                      <td>{item.time}</td>
+                      <td>{item.temporada}</td>
+                      <td>{item.vitorias}</td>
                       <td>
                         <ButtonComponent
                           type="button"

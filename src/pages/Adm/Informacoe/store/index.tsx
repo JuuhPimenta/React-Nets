@@ -15,7 +15,8 @@ const InformacoeStore = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState<IInformacoeData>({
     time: '',
-    temporada: ''.
+    temporada: 0,
+    vitorias: 0,
 
     
   })
@@ -24,6 +25,7 @@ const InformacoeStore = () => {
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     try {
+      console.log(Number(id))
       if (Number(id) > 0) {
         await apiInformacoe.update(Number(id), formData);
         toast.success("Mensagem alterada com sucesso!");
@@ -47,40 +49,20 @@ const InformacoeStore = () => {
     setFormData((state: IInformacoeData) => ({ ...state, ...e }))
   }
 
-  async function handleCheck(e: string) {
-    let topic: number[] = []
-    if (formData.topic?.includes(Number(e))) {
-      topic = formData.topic.filter((i) => i !== Number(e))
-    } else {
-      topic.push(Number(e))
-    }
-    setFormData((state: IInformacoeForm) => ({ ...state, topic }))
-  }
 
   useEffect(() => {
-    const loadTopics = async () => {
-      try {
-        const response = await apiTopic.index()
-        setTopics(response.data)
-      } catch (error) {
-        console.log(error);
-      }
-    }
     if (Number(id) > 0) {
       const fetchData = async (id: number) => {
         try {
-          const response = await apiMessage.show(id);
-          setFormData({
-            ...response.data,
-            topic: response.data.messageTopic?.map((i) => i.id)
-          });
+          const response = await apiInformacoe.show(id);
+          setFormData(response.data);
+  
         } catch (error) {
           console.log(error);
         }
       };
       fetchData(Number(id));
     }
-    loadTopics()
     setIsLoading(false);
   }, [id]);
 
@@ -96,33 +78,25 @@ const InformacoeStore = () => {
                 <FcUndo /> Voltar
               </Link>
               <div>
-                <label htmlFor="time">Título: </label>
-                <input type="text" id="time" placeholder="Escreva o nome do time" required
-                  onChange={(e) => handleChange({ title: e.target.value })}
+                <label htmlFor="time">Time: </label>
+                <input type="text" id="time" placeholder="Escreva o Time" required
+                  onChange={(e) => handleChange({ time: e.target.value })}
                   value={formData?.time}
                 />
               </div>
               <div>
-                <label htmlFor="message">Mensagem: </label>
-                <textarea id="message" placeholder="Escreva uma mensagem" required
-                  onChange={(e) => handleChange({ message: e.target.value })}
+                <label htmlFor="temporada">Temporada: </label>
+                <textarea id="temporada" placeholder="Escreva a Temporada" required
+                  onChange={(e) => handleChange({ temporada: Number(e.target.value) })}
                   value={formData?.temporada}
                 />
               </div>
               <div>
-                <label>Tópicos:</label>
-                <div>
-                  {topics && topics.map((i) => (
-                    <div key={i.id}><>
-                      <input type="checkbox" id={`topic${i.id}`} name="topics[]"
-                        onChange={(e) => handleCheck(e.target.value)}
-                        value={i.id}
-                        checked={formData?.topic?.includes(Number(i.id))}
-                      />
-                      <label htmlFor={`topic${i.id}`}>{i.name}</label>
-                    </></div>
-                  ))}
-                </div>
+                <label htmlFor="vitorias">Vitorias: </label>
+                <textarea id="vitorias" placeholder="Escreva o numero de Vitorias" required
+                  onChange={(e) => handleChange({ vitorias: Number(e.target.value) })}
+                  value={formData?.vitorias}
+                />
               </div>
               <ButtonComponent bgColor="add" type="submit">
                 Enviar <FcDatabase />
