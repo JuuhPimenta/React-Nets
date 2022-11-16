@@ -12,7 +12,7 @@ class InformacoeData {
       return api.get<IInformacoeData>(`/informacoes/${id}`)
     }
     update(id: number, data: IInformacoeData) {
-      return api.put(`/informacpes/${id}`, data)
+      return api.put(`/informacoes/${id}`, data)
     }
     destroy(id: number) {
       return api.delete(`/informacoes/${id}`)

@@ -28,10 +28,10 @@ const InformacoeStore = () => {
       console.log(Number(id))
       if (Number(id) > 0) {
         await apiInformacoe.update(Number(id), formData);
-        toast.success("Mensagem alterada com sucesso!");
+        toast.success("Informaçao alterada com sucesso!");
       } else {
         await apiInformacoe.store(formData);
-        toast.success("Mensagem cadastrada com sucesso!");
+        toast.success("Informaçao cadastrada com sucesso!");
       }
       navigate('/adm/informacoe')
     } catch (error) {
