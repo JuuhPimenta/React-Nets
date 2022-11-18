@@ -4,8 +4,8 @@ import { colors } from "styles/GlobalStyle"
 
 const colorVariations = {
   default: css`
-    background-color: ${colors.black};
-    outline: 0.2rem outset ${colors.black};
+    background-color: ${colors.white};
+    outline: 0.2rem outset ${colors.white};
   `,
   add: css`
     background-color: ${colors.primary};
